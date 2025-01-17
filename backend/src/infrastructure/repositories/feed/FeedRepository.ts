@@ -21,7 +21,7 @@ export class FeedRepository implements FeedRepositoryInterface {
 
   async findAll(): Promise<Feed[]> {
     const feeds = await FeedModel.find().lean();
-    return { ...feeds } as Feed[];
+    return [ ...feeds ] as Feed[];
   }
 
   async create(feed: {

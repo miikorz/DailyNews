@@ -3,15 +3,13 @@
 import express from 'express';
 import { SERVER_STATUS } from './api/apiConstants';
 import router from './api/routes';
+import cors from 'cors';
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true })); 
 app.use(express.json());
-
-// Routes
-app.use('/', router);
-
-// Error handling
+app.use(cors({ origin: "*" }))
 app.use(
   (
     err: any,
@@ -19,6 +17,7 @@ app.use(
     res: express.Response,
     next: express.NextFunction
   ) => {
+    // Error handling
     res.status(err.status || 500).json({
       error: {
         message: err.message,
@@ -28,5 +27,8 @@ app.use(
     });
   }
 );
+
+// Routes
+app.use('/', router);
 
 export default app;

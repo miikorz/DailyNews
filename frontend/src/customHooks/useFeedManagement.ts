@@ -46,8 +46,8 @@ const useFeedManagement = () => {
       if (!response.ok) {
         throw new Error('Failed to create feed');
       }
-      const data = await response.json();
-      setFeeds([...feeds, data]);
+      await response.json();
+      location.href = '/';
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -74,7 +74,6 @@ const useFeedManagement = () => {
   const updateFeed = async (id: string, updatedFeed: Partial<Feed>) => {
     setLoading(true);
     try {
-
       const response = await fetch(`${baseUrl}/${id}`, {
         method: 'PUT',
         headers: {

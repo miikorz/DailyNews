@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useFeedManagement from '../customHooks/useFeedManagement';
+import Modal from '../ui/Modal';
 
 const NewsDetail: React.FC = () => {
   const params = useParams<{ id: string }>();
-  const { getFeedById, feedData, setFeedData, updateFeed } = useFeedManagement();
+  const [isCreateModalOpen, setisCreateModalOpen] = useState(false);
+  const { getFeedById, feedData, setFeedData, updateFeed, createFeed } =
+    useFeedManagement();
 
   useEffect(() => {
     const { id } = params;
@@ -22,6 +25,14 @@ const NewsDetail: React.FC = () => {
       ...feedData,
       [property]: e.target.value,
     });
+  };
+
+  const handleOnSubmit = () => {
+    if (params.id) {
+      updateFeed(params.id, feedData);
+    } else {
+      setisCreateModalOpen(true);
+    }
   };
 
   return (
@@ -161,14 +172,21 @@ const NewsDetail: React.FC = () => {
         </div>
       </div>
       <div className="flex items-center justify-center mt-5">
-          <button
-            className="shadow bg-pink-600 hover:bg-pink-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-            type="button"
-            onClick={() => updateFeed(params.id as string, feedData)}
-          >
-            Save
-          </button>
+        <button
+          className="shadow bg-pink-600 hover:bg-pink-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+          type="button"
+          onClick={handleOnSubmit}
+        >
+          {params.id ? 'Save' : 'Create'}
+        </button>
       </div>
+      <Modal
+        isOpen={isCreateModalOpen}
+        onClose={() => setisCreateModalOpen(false)}
+        onSubmit={() => createFeed(feedData)}
+        title="Create new Feed"
+        message="You are about to create a new Feed, are you sure?"
+      />
     </div>
   );
 };

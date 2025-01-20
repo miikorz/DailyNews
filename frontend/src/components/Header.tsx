@@ -1,4 +1,4 @@
-import ThemeSwitch from './ThemeSwitch';
+import React from 'react';
 
 const Header = () => {
   return (
@@ -11,9 +11,6 @@ const Header = () => {
           </div>
         </div>
       </a>
-      <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
-        <ThemeSwitch />
-      </div>
     </header>
   );
 };

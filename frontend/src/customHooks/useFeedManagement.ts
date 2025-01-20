@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Feed } from '../interfaces/Feed';
+import { useToast } from '../context/ToastContext';
 
 const useFeedManagement = () => {
+  const { addToast } = useToast();
   const [feeds, setFeeds] = useState<Feed[]>([]);
   const [feedData, setFeedData] = useState<Feed>({
     _id: null,
@@ -15,6 +17,7 @@ const useFeedManagement = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
+  // TODO: move it to .env
   const baseUrl = 'http://localhost:3001/feed';
 
   const getAllFeeds = async () => {
@@ -47,7 +50,11 @@ const useFeedManagement = () => {
         throw new Error('Failed to create feed');
       }
       await response.json();
-      location.href = '/';
+      addToast('New created successfully', 'success');
+      setTimeout(() => {
+        window.location.href = '/';
+      }
+      , 1000);
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -92,9 +99,7 @@ const useFeedManagement = () => {
       if (!response.ok) {
         throw new Error('Failed to update feed');
       }
-
-      const data = await response.json();
-      setFeeds(feeds.map((feed) => (feed._id === id ? data : feed)));
+      addToast('New updated successfully', 'success');
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -111,6 +116,8 @@ const useFeedManagement = () => {
       if (!response.ok) {
         throw new Error('Failed to delete feed');
       }
+      // TODO: use enums for types
+      addToast('Feed deleted successfully', 'success');
       setFeeds(feeds.filter((feed) => feed._id !== id));
     } catch (err) {
       setError((err as Error).message);

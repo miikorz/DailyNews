@@ -5,7 +5,7 @@ import Modal from '../ui/Modal';
 
 const NewsDetail: React.FC = () => {
   const params = useParams<{ id: string }>();
-  const [isCreateModalOpen, setisCreateModalOpen] = useState(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const { getFeedById, feedData, setFeedData, updateFeed, createFeed } =
     useFeedManagement();
 
@@ -31,7 +31,7 @@ const NewsDetail: React.FC = () => {
     if (params.id) {
       updateFeed(params.id, feedData);
     } else {
-      setisCreateModalOpen(true);
+      setIsCreateModalOpen(true);
     }
   };
 
@@ -42,7 +42,7 @@ const NewsDetail: React.FC = () => {
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full px-3 mb-6 md:mb-0">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-gray-300"
                 htmlFor="grid-title"
               >
                 Title
@@ -63,7 +63,7 @@ const NewsDetail: React.FC = () => {
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full px-3">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-gray-300"
                 htmlFor="grid-description"
               >
                 Description
@@ -80,7 +80,7 @@ const NewsDetail: React.FC = () => {
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full px-3">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-gray-300"
                 htmlFor="grid-link"
               >
                 Link
@@ -93,7 +93,7 @@ const NewsDetail: React.FC = () => {
                 value={feedData.link ?? ''}
                 onChange={(e) => handleOnChange(e, 'link')}
               />
-              <p className="text-gray-600 text-xs italic">
+              <p className="text-gray-600 text-xs italic dark:text-gray-300">
                 Please enter a full valid URL
               </p>
             </div>
@@ -101,7 +101,7 @@ const NewsDetail: React.FC = () => {
           <div className="flex flex-wrap -mx-3 mb-2">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-gray-300"
                 htmlFor="grid-newsletter"
               >
                 Newsletter
@@ -117,7 +117,7 @@ const NewsDetail: React.FC = () => {
             </div>
             <div className="w-full md:w-1/2 px-3 mb-6">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-gray-300"
                 htmlFor="grid-author"
               >
                 Author
@@ -135,7 +135,7 @@ const NewsDetail: React.FC = () => {
           <div className="flex flex-wrap -mx-3">
             <div className="w-full px-3">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-gray-300"
                 htmlFor="grid-portrait"
               >
                 Portrait image
@@ -148,7 +148,7 @@ const NewsDetail: React.FC = () => {
                 value={feedData.portrait ?? ''}
                 onChange={(e) => handleOnChange(e, 'portrait')}
               />
-              <p className="text-gray-600 text-xs italic">
+              <p className="text-gray-600 text-xs italic dark:text-gray-300">
                 Please enter a full valid image URL
               </p>
             </div>
@@ -173,7 +173,7 @@ const NewsDetail: React.FC = () => {
       </div>
       <div className="flex items-center justify-center mt-5">
         <button
-          className="shadow bg-pink-600 hover:bg-pink-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+          className="shadow bg-pink-600 hover:bg-pink-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded mb-4"
           type="button"
           onClick={handleOnSubmit}
         >
@@ -182,7 +182,7 @@ const NewsDetail: React.FC = () => {
       </div>
       <Modal
         isOpen={isCreateModalOpen}
-        onClose={() => setisCreateModalOpen(false)}
+        onClose={() => setIsCreateModalOpen(false)}
         onSubmit={() => createFeed(feedData)}
         title="Create new Feed"
         message="You are about to create a new Feed, are you sure?"

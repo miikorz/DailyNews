@@ -1,16 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
-    <header className="flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10">
-      <a href="/" aria-label="Daily News">
+    <header className="flex items-center w-fulL justify-between py-10">
         <div className="flex items-center justify-between">
           <div className="mr-3">LOGO</div>
-          <div className="hidden h-6 text-2xl font-semibold sm:block">
+          <div className="hidden cursor-pointer h-6 text-2xl font-semibold sm:block text-red-400 hover:text-red-500" onClick={() => navigate('/')}>
             Daily News
           </div>
         </div>
-      </a>
     </header>
   );
 };

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Feed } from '../interfaces/Feed';
 import { useToast } from '../context/ToastContext';
+import { useNavigate } from 'react-router-dom';
 
 const useFeedManagement = () => {
+  const navigate = useNavigate();
   const { addToast } = useToast();
   const [feeds, setFeeds] = useState<Feed[]>([]);
   const [feedData, setFeedData] = useState<Feed>({
@@ -53,7 +55,7 @@ const useFeedManagement = () => {
       await response.json();
       addToast('New created successfully', 'success');
       setTimeout(() => {
-        window.location.href = '/';
+        navigate('/');
       }, 1000);
     } catch (err) {
       setError((err as Error).message);

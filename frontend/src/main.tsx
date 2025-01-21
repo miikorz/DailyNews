@@ -10,22 +10,29 @@ import { ToastProvider } from './context/ToastContext';
 import Toast from './ui/Toast';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
   <StrictMode>
     <ToastProvider>
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
-        <MultiTool onSwitchThemeClick={() => {}} />
-        <Header />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<NewsHome />} />
-            <Route path=":id" element={<NewsDetail />} />
-            <Route path="/add" element={<NewsDetail />} />
-            {/* // TODO: Add a 404 page */}
-            {/* <Route path="*" element={<h1>404 Not Found</h1>} /> */}
-          </Routes>
-        </BrowserRouter>
-        <Toast />
+      <div className="dark:bg-gray-800 h-full overflow-auto">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0 dark:bg-gray-800">
+          <BrowserRouter>
+          <Header />
+            <MultiTool />
+            <Routes>
+              <Route path="/" element={<NewsHome />} />
+              <Route path=":id" element={<NewsDetail />} />
+              <Route path="/add" element={<NewsDetail />} />
+              {/* // TODO: Add a 404 page */}
+              <Route path="*" element={
+                <div>
+                  <h1>404</h1>
+                </div>
+              } />
+            </Routes>
+          </BrowserRouter>
+          <Toast />
+        </div>
       </div>
     </ToastProvider>
   </StrictMode>

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import useFeedManagement from '../customHooks/useFeedManagement';
 import Modal from '../ui/Modal';
 import NewsSearch from './NewsSearch';
+import { useNavigate } from 'react-router-dom';
 
 const NewsletterList: React.FC = () => {
-  const { getAllFeeds, feeds, deleteFeed, searchFeedsByTitle } =
+  const navigate = useNavigate();
+  const { getAllFeeds, feeds, deleteFeed, searchFeedsByTitle, loading } =
     useFeedManagement();
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
   const [idToDelete, setIdToDelete] = useState('');
@@ -21,7 +23,7 @@ const NewsletterList: React.FC = () => {
 
   const handleOnEditFeed = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
-    location.href = `/${id}`;
+    navigate(`/${id}`);
   };
 
   return (
@@ -125,11 +127,16 @@ const NewsletterList: React.FC = () => {
           </a>
         );
       })}
-      {feeds?.length === 0 && (
+      {feeds?.length === 0 && !loading && (
         <div className="flex justify-center items-center h-64">
           <p className="text-gray-500 dark:text-gray-400">
             No feeds found, try another search
           </p>
+        </div>
+      )}
+      {loading && (
+        <div className="flex justify-center items-center h-64">
+          <p className="text-gray-500 dark:text-gray-400">Loading...</p>
         </div>
       )}
     </>

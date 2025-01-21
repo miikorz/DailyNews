@@ -1,6 +1,6 @@
 export interface Feed {
   _id: string | null;
-  title: string | null;
+  title: string;
   description: string | null;
   author: string | null;
   link: string | null;

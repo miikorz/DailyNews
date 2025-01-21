@@ -36,6 +36,31 @@ export const getAllFeeds = async (
   }
 };
 
+export const searchFeedsByTitle = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { searchValue }: { searchValue: string } = req.body;
+
+  try {
+    const feedData = await feedService.searchFeedsByTitle(searchValue);
+    
+    res
+      .status(SERVER_CODES.REQUEST_SUCCESSFUL)
+      .json({ data: feedData, error: null });
+    
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (_) {
+    res.status(SERVER_CODES.INTERNAL_SERVER_ERROR).json({
+      error: {
+        code: SERVER_STATUS.INTERNAL_SERVER_ERROR,
+        message: SERVER_MESSAGES[SERVER_STATUS.INTERNAL_SERVER_ERROR],
+      },
+      data: null,
+    });
+  }
+};
+
 export const getFeed = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
 

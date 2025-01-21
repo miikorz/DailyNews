@@ -47,6 +47,14 @@ export class FeedRepository implements FeedRepositoryInterface {
     return null;
   }
 
+  async findByTitle(title: string): Promise<Feed[]> {
+    const feeds = await FeedModel.find({
+      title: { $regex: new RegExp(title, 'i') },
+    }).lean();
+
+    return [ ...feeds ] as Feed[];
+  }
+
   async update(id: string, feed: Partial<Feed>): Promise<Feed | null> {
     const updatedFeed = await FeedModel.findByIdAndUpdate(id, feed, {
       new: true,

@@ -37,6 +37,10 @@ export class FeedService {
     return await this.feedRepository.findById(id);
   }
 
+  async searchFeedsByTitle(title: string): Promise<Feed[]> {
+    return await this.feedRepository.findByTitle(title);
+  }
+
   async updateFeed(id: string, feed: Partial<Feed>): Promise<Feed | null> {
     return await this.feedRepository.update(id, feed);
   }

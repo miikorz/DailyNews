@@ -8,4 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 <!-- TODO: add form valdations -->
+<!-- TODO: add responsive to new detail page -->
 <!-- TODO: add max width for title & description on news list -->
+<!-- TODO: add logo -->
+<!-- TODO: testing -->

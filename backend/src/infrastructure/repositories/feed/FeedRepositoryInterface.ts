@@ -12,6 +12,7 @@ export interface FeedRepositoryInterface {
     newsletter: string;
   }): Promise<Feed>;
   findById(id: string): Promise<Feed | null>;
+  findByTitle(title: string): Promise<Feed[]>;
   update(id: string, feed: Partial<Feed>): Promise<Feed | null>;
   delete(id: string): Promise<Feed | null>;
 }

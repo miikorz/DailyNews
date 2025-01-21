@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useFeedManagement from '../customHooks/useFeedManagement';
 import Modal from '../ui/Modal';
+import NewsSearch from './NewsSearch';
 
 const NewsletterList: React.FC = () => {
-  const { getAllFeeds, feeds, deleteFeed } = useFeedManagement();
+  const { getAllFeeds, feeds, deleteFeed, searchFeedsByTitle } =
+    useFeedManagement();
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
   const [idToDelete, setIdToDelete] = useState('');
 
@@ -24,6 +26,9 @@ const NewsletterList: React.FC = () => {
 
   return (
     <>
+      <div className="border-none">
+        <NewsSearch searchFeedsByTitle={searchFeedsByTitle} />
+      </div>
       <Modal
         isOpen={isDeleteModalOpen}
         onClose={() => setisDeleteModalOpen(false)}
@@ -46,12 +51,12 @@ const NewsletterList: React.FC = () => {
         const newsLetterPageUrl = `https://www.${newsletter?.split(' ').join('').replace('í', 'i')}.es`;
 
         return (
-          // TODO: <a> can't be a child of another <a> element, fix it
           <a
             key={id}
             href={link!}
             target="_blank"
-            className="flex flex-col md:flex-row group p-6 rounded-md text-sm transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-400" rel="noreferrer"
+            className="flex flex-col md:flex-row group p-6 rounded-md text-sm transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-400"
+            rel="noreferrer"
           >
             <img
               className="h-48 md:w-48 lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden object-cover"
@@ -71,14 +76,17 @@ const NewsletterList: React.FC = () => {
                   <p className="text-gray-500 leading-none font-bold text-sm">
                     {author}
                   </p>
-                  <a href={newsLetterPageUrl} target="_blank" rel="noreferrer">{newsletter}</a>
+                  {/* // TODO: <a> can't be a child of another <a> element, fix it */}
+                  <a href={newsLetterPageUrl} target="_blank" rel="noreferrer">
+                    {newsletter}
+                  </a>
                 </div>
               </div>
             </div>
             <div className="flex w-full md:w-4 justify-end items-end">
               <button
                 className="flex group-hover:flex sm:flex xs:flex md:hidden items-center justify-center w-4 h-6 text-white font-bold py-2 px-4 rounded mr-2"
-                onClick={(e) => handleOnEditFeed(e, id!)}  
+                onClick={(e) => handleOnEditFeed(e, id!)}
               >
                 {/* TODO: Move svg to assets */}
                 <div className="flex">

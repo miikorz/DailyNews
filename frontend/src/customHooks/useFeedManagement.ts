@@ -23,12 +23,13 @@ const useFeedManagement = () => {
   const getAllFeeds = async () => {
     setLoading(true);
     try {
-      const request = await fetch(baseUrl);
-      if (!request.ok) {
-        throw new Error('Failed to fetch feeds');
+      // TODO: API utils? client?
+      const response = await fetch(baseUrl);
+      if (!response.ok) {
+        throw new Error('Failed to fetch news');
       }
-      const response = await request.json();
-      setFeeds(response.data);
+      const { data } = await response.json();
+      setFeeds(data);
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -66,7 +67,7 @@ const useFeedManagement = () => {
     try {
       const response = await fetch(`${baseUrl}/${id}`);
       if (!response.ok) {
-        throw new Error('Failed to fetch feed');
+        throw new Error('Failed to fetch new');
       }
       const { data } = await response.json();
       setFeedData(data);
@@ -96,7 +97,7 @@ const useFeedManagement = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to update feed');
+        throw new Error('Failed to update new');
       }
       addToast('New updated successfully', 'success');
     } catch (err) {
@@ -113,11 +114,38 @@ const useFeedManagement = () => {
         method: 'DELETE',
       });
       if (!response.ok) {
-        throw new Error('Failed to delete feed');
+        throw new Error('Failed to delete new');
       }
       // TODO: use enums for types
       addToast('Feed deleted successfully', 'success');
       setFeeds(feeds.filter((feed) => feed._id !== id));
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const searchFeedsByTitle = async (searchValue: string | null) => {
+    if (searchValue === null) return;
+
+    setLoading(true);
+    
+    try {
+      // TODO: API/ENDPOINTS constants?
+      const response = await fetch(`${baseUrl}/search`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ searchValue }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to find news');
+      }
+      const { data } = await response.json();
+      setFeeds(data);
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -141,6 +169,7 @@ const useFeedManagement = () => {
     getFeedById,
     updateFeed,
     deleteFeed,
+    searchFeedsByTitle,
   };
 };
 

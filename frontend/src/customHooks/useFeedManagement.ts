@@ -130,7 +130,7 @@ const useFeedManagement = () => {
     if (searchValue === null) return;
 
     setLoading(true);
-    
+
     try {
       // TODO: API/ENDPOINTS constants?
       const response = await fetch(`${baseUrl}/search`, {

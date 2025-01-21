@@ -125,6 +125,13 @@ const NewsletterList: React.FC = () => {
           </a>
         );
       })}
+      {feeds?.length === 0 && (
+        <div className="flex justify-center items-center h-64">
+          <p className="text-gray-500 dark:text-gray-400">
+            No feeds found, try another search
+          </p>
+        </div>
+      )}
     </>
   );
 };

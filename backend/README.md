@@ -125,3 +125,9 @@ In the future, the following improvements could be implemented:
 ## DailyTrends Service Diagram
 
 ![alt text](https://github.com/miikorz/DailyTrends/blob/main/diagram-dailytrends.png?raw=true)
+
+// TODO: add database creation date and order by date
+// TODO: explain how BD would have change if we had more entities, like separated feed authors, newsletters... in different tables, we would have relation between tables etc
+
+<!-- TODO: add scrapping text sanitization -->
+<!-- TODO: improve news image scrapping -->

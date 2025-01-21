@@ -53,8 +53,7 @@ const useFeedManagement = () => {
       addToast('New created successfully', 'success');
       setTimeout(() => {
         window.location.href = '/';
-      }
-      , 1000);
+      }, 1000);
     } catch (err) {
       setError((err as Error).message);
     } finally {

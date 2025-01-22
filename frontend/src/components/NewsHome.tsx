@@ -9,7 +9,7 @@ const NewsHome: React.FC = () => {
           Welcome to your main feed of news
         </h1>
         <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-          A List of news created with React and Tailwind.css
+          Stop wasting time searching for news. Get all the news you need in one!
         </p>
       </div>
       <ul className="divide-y divide-gray-200 dark:divide-gray-700">

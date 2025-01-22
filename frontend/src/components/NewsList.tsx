@@ -32,7 +32,7 @@ const NewsletterList: React.FC = () => {
   return (
     <>
       <div className="border-none">
-        <NewsSearch searchFeedsByTitle={searchFeedsByTitle} />
+        <NewsSearch onSearch={searchFeedsByTitle} />
       </div>
       <Modal
         isOpen={isDeleteModalOpen}

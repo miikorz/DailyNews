@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import useDebounce from '../customHooks/useDebounce';
 
 interface NewsSearchProps {
-  searchFeedsByTitle: (title: string | null) => void;
+  onSearch: (title: string | null) => void;
 }
 
-const NewsSearch: React.FC<NewsSearchProps> = ({ searchFeedsByTitle }) => {
+const NewsSearch: React.FC<NewsSearchProps> = ({ onSearch }) => {
   const [searchValue, setSearchValue] = useState<string | null>(null);
   const debounceValue = useDebounce(searchValue, 500);
 
   useEffect(() => {
-    searchFeedsByTitle(debounceValue);
+    onSearch(debounceValue);
   }, [debounceValue]);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {

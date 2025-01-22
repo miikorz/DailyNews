@@ -128,4 +128,3 @@ In the future, the following improvements could be implemented:
 
 <!-- TODO: explain how BD would have change if we had more entities, like separated feed authors, newsletters... in different tables, we would have relation between tables etc -->
 <!-- TODO: explain why some news on list have no images -->
-<!-- TODO: improve news image scrapping -->

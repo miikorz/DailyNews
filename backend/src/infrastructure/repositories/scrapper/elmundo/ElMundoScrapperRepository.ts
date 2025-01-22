@@ -34,7 +34,9 @@ export class ElMundoScrapperRepository implements ScrapperRepositoryInterface {
           .find('div.ue-c-cover-content__footer')
           .text();
         const portrait: string =
-          $(el).find('img.ue-c-cover-content__image').attr('src') || '';
+          $(el).find('img.ue-c-cover-content__image').attr('src') ||
+          $(el).find('img').attr('src') ||
+          '';
 
         const feed: Feed = new FeedDTO(
           title,

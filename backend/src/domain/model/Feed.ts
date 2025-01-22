@@ -5,6 +5,7 @@ export interface Feed {
   link: string;
   portrait: string | null;
   newsletter: string;
+  createdAt: Date;
 }
 
 export class FeedDTO implements Feed {
@@ -14,6 +15,7 @@ export class FeedDTO implements Feed {
   link: string;
   portrait: string | null;
   newsletter: string;
+  createdAt: Date;
 
   constructor(
     title: string,
@@ -29,6 +31,7 @@ export class FeedDTO implements Feed {
     this.link = link;
     this.portrait = portrait;
     this.newsletter = newsletter;
+    this.createdAt = new Date();
   }
 
   toObject(): Feed {
@@ -39,6 +42,7 @@ export class FeedDTO implements Feed {
       link: this.link,
       portrait: this.portrait,
       newsletter: this.newsletter,
+      createdAt: this.createdAt,
     };
   }
 }

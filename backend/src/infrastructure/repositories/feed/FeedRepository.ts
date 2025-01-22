@@ -20,7 +20,7 @@ export class FeedRepository implements FeedRepositoryInterface {
   }
 
   async findAll(): Promise<Feed[]> {
-    const feeds = await FeedModel.find().lean();
+    const feeds = await FeedModel.find().sort({ createdAt: -1 }).lean();
     return [ ...feeds ] as Feed[];
   }
 
@@ -50,7 +50,7 @@ export class FeedRepository implements FeedRepositoryInterface {
   async findByTitle(title: string): Promise<Feed[]> {
     const feeds = await FeedModel.find({
       title: { $regex: new RegExp(title, 'i') },
-    }).lean();
+    }).sort({ createdAt: -1 }).lean();
 
     return [ ...feeds ] as Feed[];
   }

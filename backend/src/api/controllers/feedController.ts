@@ -100,7 +100,7 @@ export const createFeed = async (
 
   try {
     // Soft request validation
-    if (title && description && author && link && newsletter) {
+    if (title && link) {
       const feedData = await feedService.createFeed({
         title,
         description,

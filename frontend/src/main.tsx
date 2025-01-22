@@ -17,18 +17,21 @@ root.render(
       <div className="dark:bg-gray-800 h-full overflow-auto">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0 dark:bg-gray-800">
           <BrowserRouter>
-          <Header />
+            <Header />
             <MultiTool />
             <Routes>
               <Route path="/" element={<NewsHome />} />
               <Route path=":id" element={<NewsDetail />} />
               <Route path="/add" element={<NewsDetail />} />
               {/* // TODO: Add a 404 page */}
-              <Route path="*" element={
-                <div>
-                  <h1>404</h1>
-                </div>
-              } />
+              <Route
+                path="*"
+                element={
+                  <div>
+                    <h1>404</h1>
+                  </div>
+                }
+              />
             </Routes>
           </BrowserRouter>
           <Toast />

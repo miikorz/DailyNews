@@ -24,12 +24,7 @@ root.render(
               <Route path="/" element={<NewsHome />} />
               <Route path="/new/:id" element={<NewsDetail />} />
               <Route path="/add" element={<NewsDetail />} />
-              <Route
-                path="*"
-                element={
-                  <NotFound />
-                }
-              />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
           <Toast />

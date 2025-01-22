@@ -154,11 +154,6 @@ const useFeedManagement = () => {
     }
   };
 
-    // useEffect(() => {
-    //   // TODO: fix the double triggering of the useEffect
-    //   getAllFeeds();
-    // }, []);
-
   return {
     feeds,
     feedData,

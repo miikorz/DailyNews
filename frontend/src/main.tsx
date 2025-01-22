@@ -4,8 +4,8 @@ import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NewsHome from './components/NewsHome';
 import NewsDetail from './components/NewsDetail';
-import Header from './components/Header';
-import MultiTool from './components/MultiTool';
+import Header from './ui/Header';
+import MultiTool from './ui/MultiTool';
 import { ToastProvider } from './context/ToastContext';
 import Toast from './ui/Toast';
 
@@ -21,7 +21,7 @@ root.render(
             <MultiTool />
             <Routes>
               <Route path="/" element={<NewsHome />} />
-              <Route path=":id" element={<NewsDetail />} />
+              <Route path="/new/:id" element={<NewsDetail />} />
               <Route path="/add" element={<NewsDetail />} />
               {/* // TODO: Add a 404 page */}
               <Route

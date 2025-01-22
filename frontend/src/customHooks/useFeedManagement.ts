@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Feed } from '../interfaces/Feed';
-import { useToast } from '../context/ToastContext';
+import { ToastType, useToast } from '../context/ToastContext';
 import { useNavigate } from 'react-router-dom';
+import { apiEndpoints } from '../utils/apiConstants';
 
 const useFeedManagement = () => {
   const navigate = useNavigate();
@@ -19,14 +20,10 @@ const useFeedManagement = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  // TODO: move it to .env
-  const baseUrl = 'http://localhost:3001/feed';
-
   const getAllFeeds = async () => {
     setLoading(true);
     try {
-      // TODO: API utils? client?
-      const response = await fetch(baseUrl);
+      const response = await fetch(apiEndpoints.getAllFeeds);
       if (!response.ok) {
         throw new Error('Failed to fetch news');
       }
@@ -42,7 +39,7 @@ const useFeedManagement = () => {
   const createFeed = async (feed: Feed) => {
     setLoading(true);
     try {
-      const response = await fetch(baseUrl, {
+      const response = await fetch(apiEndpoints.createFeed, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,13 +50,13 @@ const useFeedManagement = () => {
         throw new Error('Failed to create feed');
       }
       await response.json();
-      addToast('New created successfully', 'success');
+      addToast('New created successfully', ToastType.SUCCESS);
       setTimeout(() => {
         navigate('/');
       }, 1000);
     } catch (err) {
       setError((err as Error).message);
-      addToast('New could not be created', 'error');
+      addToast('New could not be created', ToastType.ERROR);
     } finally {
       setLoading(false);
     }
@@ -68,7 +65,7 @@ const useFeedManagement = () => {
   const getFeedById = async (id: string) => {
     setLoading(true);
     try {
-      const response = await fetch(`${baseUrl}/${id}`);
+      const response = await fetch(apiEndpoints.getFeedById(id));
       if (!response.ok) {
         throw new Error('Failed to fetch new');
       }
@@ -76,7 +73,7 @@ const useFeedManagement = () => {
       setFeedData(data);
     } catch (err) {
       setError((err as Error).message);
-      addToast('New could not be loaded', 'error');
+      addToast('New could not be loaded', ToastType.ERROR);
     } finally {
       setLoading(false);
     }
@@ -85,7 +82,7 @@ const useFeedManagement = () => {
   const updateFeed = async (id: string, updatedFeed: Partial<Feed>) => {
     setLoading(true);
     try {
-      const response = await fetch(`${baseUrl}/${id}`, {
+      const response = await fetch(apiEndpoints.updateFeed(id), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -103,10 +100,10 @@ const useFeedManagement = () => {
       if (!response.ok) {
         throw new Error('Failed to update new');
       }
-      addToast('New updated successfully', 'success');
+      addToast('New updated successfully', ToastType.SUCCESS);
     } catch (err) {
       setError((err as Error).message);
-      addToast('New could not be updated', 'error');
+      addToast('New could not be updated', ToastType.ERROR);
     } finally {
       setLoading(false);
     }
@@ -115,18 +112,17 @@ const useFeedManagement = () => {
   const deleteFeed = async (id: string) => {
     setLoading(true);
     try {
-      const response = await fetch(`${baseUrl}/${id}`, {
+      const response = await fetch(apiEndpoints.deleteFeed(id), {
         method: 'DELETE',
       });
       if (!response.ok) {
         throw new Error('Failed to delete new');
       }
-      // TODO: use enums for types
-      addToast('Feed deleted successfully', 'success');
+      addToast('Feed deleted successfully', ToastType.SUCCESS);
       setFeeds(feeds.filter((feed) => feed._id !== id));
     } catch (err) {
       setError((err as Error).message);
-      addToast('New could not be deleted', 'error');
+      addToast('New could not be deleted', ToastType.ERROR);
     } finally {
       setLoading(false);
     }
@@ -138,8 +134,7 @@ const useFeedManagement = () => {
     setLoading(true);
 
     try {
-      // TODO: API/ENDPOINTS constants?
-      const response = await fetch(`${baseUrl}/search`, {
+      const response = await fetch(apiEndpoints.searchFeedsByTitle, {
         method: 'POST',
         headers: {
           Accept: 'application/json',

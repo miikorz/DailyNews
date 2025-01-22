@@ -126,8 +126,6 @@ In the future, the following improvements could be implemented:
 
 ![alt text](https://github.com/miikorz/DailyTrends/blob/main/diagram-dailytrends.png?raw=true)
 
-// TODO: add database creation date and order by date
-// TODO: explain how BD would have change if we had more entities, like separated feed authors, newsletters... in different tables, we would have relation between tables etc
-
-<!-- TODO: add scrapping text sanitization -->
+<!-- TODO: explain how BD would have change if we had more entities, like separated feed authors, newsletters... in different tables, we would have relation between tables etc -->
+<!-- TODO: explain why some news on list have no images -->
 <!-- TODO: improve news image scrapping -->

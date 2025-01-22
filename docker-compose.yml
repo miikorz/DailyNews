@@ -9,6 +9,8 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/frontend
+    environment:
+      - VITE_BACKEND_BASE_URI=http://localhost:3001/feed
     depends_on:
       - backend
   backend:

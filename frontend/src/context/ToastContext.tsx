@@ -3,12 +3,18 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 interface Toast {
   id: number;
   message: string;
-  type: 'success' | 'error' | 'info';
+  type: ToastType;
+}
+
+export enum ToastType {
+  SUCCESS = 'success',
+  ERROR = 'error',
+  INFO = 'info',
 }
 
 interface ToastContextProps {
   toasts: Toast[];
-  addToast: (message: string, type: 'success' | 'error' | 'info') => void;
+  addToast: (message: string, type: ToastType) => void;
   removeToast: (id: number) => void;
 }
 
@@ -19,7 +25,7 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const addToast = (message: string, type: 'success' | 'error' | 'info') => {
+  const addToast = (message: string, type: ToastType) => {
     const id = Date.now();
     setToasts([...toasts, { id, message, type }]);
     setTimeout(() => removeToast(id), 3000); // Auto-remove after 3 seconds

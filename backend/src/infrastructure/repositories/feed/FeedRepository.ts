@@ -21,7 +21,7 @@ export class FeedRepository implements FeedRepositoryInterface {
 
   async findAll(): Promise<Feed[]> {
     const feeds = await FeedModel.find().sort({ createdAt: -1 }).lean();
-    return [ ...feeds ] as Feed[];
+    return [...feeds] as Feed[];
   }
 
   async create(feed: {
@@ -50,9 +50,11 @@ export class FeedRepository implements FeedRepositoryInterface {
   async findByTitle(title: string): Promise<Feed[]> {
     const feeds = await FeedModel.find({
       title: { $regex: new RegExp(title, 'i') },
-    }).sort({ createdAt: -1 }).lean();
+    })
+      .sort({ createdAt: -1 })
+      .lean();
 
-    return [ ...feeds ] as Feed[];
+    return [...feeds] as Feed[];
   }
 
   async update(id: string, feed: Partial<Feed>): Promise<Feed | null> {

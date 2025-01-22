@@ -7,7 +7,12 @@ const newsletterName: string = 'El Mundo';
 
 export class ElMundoScrapperRepository implements ScrapperRepositoryInterface {
   async getTopNews(): Promise<Feed[]> {
-    const content: Response = await fetch(newsletterUrl);
+    const content: Response = await fetch(newsletterUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    });
     const body: string = await content.text();
     const $: cheerio.CheerioAPI = cheerio.load(body);
     const feedLimit: number = 5;

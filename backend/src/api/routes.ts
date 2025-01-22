@@ -26,7 +26,7 @@ router.get('/feed/:id', getFeed);
  * @returns {object} 500 - An object with the error message
  */
 router.get('/feed', getAllFeeds);
-// TODO: add test for search?
+
 /**
  * @route GET /feed
  * @desc Get all feeds

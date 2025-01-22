@@ -19,7 +19,7 @@ const NewsDetail: React.FC = () => {
   }, []);
 
   const handleOnChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     property: string
   ) => {
     setFeedData({
@@ -93,7 +93,6 @@ const NewsDetail: React.FC = () => {
                 id="grid-description"
                 placeholder="News Description"
                 value={feedData.description ?? ''}
-                // TODO: fix type
                 onChange={(e) => handleOnChange(e, 'description')}
               />
             </div>

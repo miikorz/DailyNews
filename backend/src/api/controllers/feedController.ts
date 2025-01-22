@@ -44,11 +44,11 @@ export const searchFeedsByTitle = async (
 
   try {
     const feedData = await feedService.searchFeedsByTitle(searchValue);
-    
+
     res
       .status(SERVER_CODES.REQUEST_SUCCESSFUL)
       .json({ data: feedData, error: null });
-    
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (_) {
     res.status(SERVER_CODES.INTERNAL_SERVER_ERROR).json({

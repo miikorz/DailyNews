@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Feed } from '../interfaces/Feed';
+import { Feed } from '../utils/interfaces/Feed';
 import { ToastType, useToast } from '../context/ToastContext';
 import { useNavigate } from 'react-router-dom';
 import { apiEndpoints } from '../utils/apiConstants';
@@ -154,10 +154,10 @@ const useFeedManagement = () => {
     }
   };
 
-  //   useEffect(() => {
-  //     // TODO: fix the double triggering of the useEffect
-  //     getAllFeeds();
-  //   }, []);
+    // useEffect(() => {
+    //   // TODO: fix the double triggering of the useEffect
+    //   getAllFeeds();
+    // }, []);
 
   return {
     feeds,

@@ -8,6 +8,7 @@ import Header from './ui/Header';
 import MultiTool from './ui/MultiTool';
 import { ToastProvider } from './context/ToastContext';
 import Toast from './ui/Toast';
+import NotFound from './components/NotFound';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 
@@ -23,13 +24,10 @@ root.render(
               <Route path="/" element={<NewsHome />} />
               <Route path="/new/:id" element={<NewsDetail />} />
               <Route path="/add" element={<NewsDetail />} />
-              {/* // TODO: Add a 404 page */}
               <Route
                 path="*"
                 element={
-                  <div>
-                    <h1>404</h1>
-                  </div>
+                  <NotFound />
                 }
               />
             </Routes>

@@ -67,6 +67,11 @@ const NewsletterList: React.FC = () => {
                 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg'
               }
               alt={title ?? ''}
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null; // prevents looping
+                currentTarget.src =
+                  'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
+              }}
             ></img>
             <div className="w-full p-4 flex flex-col justify-between leading-normal">
               <div className="mb-8">

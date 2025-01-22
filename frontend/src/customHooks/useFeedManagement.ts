@@ -59,6 +59,7 @@ const useFeedManagement = () => {
       }, 1000);
     } catch (err) {
       setError((err as Error).message);
+      addToast('New could not be created', 'error');
     } finally {
       setLoading(false);
     }
@@ -75,6 +76,7 @@ const useFeedManagement = () => {
       setFeedData(data);
     } catch (err) {
       setError((err as Error).message);
+      addToast('New could not be loaded', 'error');
     } finally {
       setLoading(false);
     }
@@ -104,6 +106,7 @@ const useFeedManagement = () => {
       addToast('New updated successfully', 'success');
     } catch (err) {
       setError((err as Error).message);
+      addToast('New could not be updated', 'error');
     } finally {
       setLoading(false);
     }
@@ -123,6 +126,7 @@ const useFeedManagement = () => {
       setFeeds(feeds.filter((feed) => feed._id !== id));
     } catch (err) {
       setError((err as Error).message);
+      addToast('New could not be deleted', 'error');
     } finally {
       setLoading(false);
     }

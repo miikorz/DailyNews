@@ -12,7 +12,7 @@ const NewsDetail: React.FC = () => {
 
   useEffect(() => {
     const { id } = params;
-
+    console.log(params)
     if (id) {
       getFeedById(id);
     }

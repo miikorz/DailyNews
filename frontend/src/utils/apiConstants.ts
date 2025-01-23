@@ -1,4 +1,5 @@
-const baseUrl = import.meta.env.VITE_BACKEND_BASE_URI;
+// const baseUrl = import.meta.env.VITE_BACKEND_BASE_URI;
+const baseUrl = 'http://localhost:3001/feed';
 
 export const apiEndpoints = {
   getAllFeeds: baseUrl,

@@ -1,8 +1,5 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-// import '@testing-library/jest-dom/extend-expect';
-import { BrowserRouter } from 'react-router-dom';
-import { ToastProvider } from '../context/ToastContext';
 import useFeedManagement from '../customHooks/useFeedManagement';
 import NewsDetail from '../components/NewsDetail';
 
@@ -17,8 +14,7 @@ jest.mock('react-router-dom', () => ({
   }),
 }));
 
-// mock env variable import.meta.env.VITE_BACKEND_BASE_URI
-import.meta.env.VITE_BACKEND_BASE_URI = 'test'
+
 jest.mock('vite', () => ({
   ...jest.requireActual('vite'),
   'import.meta': {
@@ -64,11 +60,7 @@ describe('NewsDetail', () => {
 
   test('renders NewsDetail component', () => {
     render(
-    //   <BrowserRouter>
-    //     <ToastProvider>
-          <NewsDetail />
-    //     </ToastProvider>
-    //   </BrowserRouter>
+      <NewsDetail />
     );
 
     expect(screen.getByLabelText(/title/i)).toBeInTheDocument();
@@ -77,14 +69,10 @@ describe('NewsDetail', () => {
 
   test('shows validation errors when submitting empty form', () => {
     render(
-      <BrowserRouter>
-        <ToastProvider>
-          <NewsDetail />
-        </ToastProvider>
-      </BrowserRouter>
+      <NewsDetail />
     );
 
-    fireEvent.click(screen.getByText(/create news/i));
+    fireEvent.click(screen.getByText(/update new/i));
 
     expect(screen.getByText(/title is required/i)).toBeInTheDocument();
     expect(screen.getByText(/link is required/i)).toBeInTheDocument();
@@ -107,14 +95,10 @@ describe('NewsDetail', () => {
     });
 
     render(
-      <BrowserRouter>
-        <ToastProvider>
-          <NewsDetail />
-        </ToastProvider>
-      </BrowserRouter>
+      <NewsDetail />
     );
 
-    fireEvent.click(screen.getByText(/update news/i));
+    fireEvent.click(screen.getByText(/update new/i));
 
     expect(mockUpdateFeed).toHaveBeenCalledWith('1', {
       _id: '1',

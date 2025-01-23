@@ -13,7 +13,7 @@ const NotFound: React.FC = () => {
         </p>
         <Link
           to="/"
-          className="shadow bg-pink-600 hover:bg-pink-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded mb-4"
+          className="shadow bg-pink-600 hover:bg-pink-500 focus:shadow-outline focus:outline-none text-white hover:text-white font-bold py-2 px-4 rounded mb-4"
         >
           Go Home
         </Link>

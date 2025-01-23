@@ -2,6 +2,8 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import useFeedManagement from '../customHooks/useFeedManagement';
 import NewsDetail from '../components/NewsDetail';
+import { BrowserRouter } from 'react-router-dom';
+import { ToastProvider } from '../context/ToastContext';
 
 // Mocking useFeedManagement hook
 jest.mock('../customHooks/useFeedManagement');
@@ -109,5 +111,31 @@ describe('NewsDetail', () => {
       portrait: 'https://example.com/image.jpg',
       newsletter: 'Test Newsletter',
     });
+  });
+
+  test('shows notification toast when', () => {
+    const mockSetToast = jest.fn();
+    jest.mock('../context/ToastContext', () => ({
+      useToast: () => ({
+        setToast: mockSetToast,
+      }),
+    }));
+
+    render(
+      <BrowserRouter>
+        <ToastProvider>
+          <NewsDetail />
+        </ToastProvider>
+      </BrowserRouter>
+    );
+
+    fireEvent.click(screen.getByText(/update new/i));
+
+    setTimeout(() => {
+      expect(mockSetToast).toHaveBeenCalledWith({
+        message: 'News updated successfully',
+        type: 'success',
+      });
+    }, 500);
   });
 });

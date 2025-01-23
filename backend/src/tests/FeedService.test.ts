@@ -54,6 +54,7 @@ describe('FeedService', () => {
       const feedObject = {
         title: 'New Feed',
         description: 'Description',
+        createdAt: new Date(),
         author: 'Author',
         link: 'http://link.com',
         portrait: null,

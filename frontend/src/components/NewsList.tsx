@@ -7,7 +7,7 @@ import EditIcon from '../assets/EditIcon';
 import DeleteIcon from '../assets/DeleteIcon';
 import { getNewsLetterPage } from '../utils/commonUtils';
 
-const NewsletterList: React.FC = () => {
+const NewsList: React.FC = () => {
   const navigate = useNavigate();
   const { getAllFeeds, feeds, deleteFeed, searchFeedsByTitle, loading } =
     useFeedManagement();
@@ -135,4 +135,4 @@ const NewsletterList: React.FC = () => {
   );
 };
 
-export default NewsletterList;
+export default NewsList;

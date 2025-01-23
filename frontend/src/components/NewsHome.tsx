@@ -1,5 +1,5 @@
 import React from 'react';
-import NewsletterList from './NewsList';
+import NewsList from './NewsList';
 
 const NewsHome: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const NewsHome: React.FC = () => {
         </p>
       </div>
       <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-        <NewsletterList />
+        <NewsList />
       </ul>
     </div>
   );

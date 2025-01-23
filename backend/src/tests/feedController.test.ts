@@ -96,6 +96,7 @@ describe('FeedController', () => {
       feedMock = {
         title: 'New Feed',
         description: 'Description',
+        createdAt: new Date(),
         author: 'Author',
         link: 'http://link.com',
         portrait: null,
@@ -105,7 +106,7 @@ describe('FeedController', () => {
       const response = await request(app)
         .post('/feed')
         .send(feedMock)
-        .expect(200, { data: { ...feedMock, id: '1' }, error: null });
+        .expect(200, { data: { ...feedMock, id: '1', createdAt: feedMock.createdAt.toISOString() }, error: null });
 
       expect(response.status).toBe(SERVER_CODES.REQUEST_SUCCESSFUL);
     });

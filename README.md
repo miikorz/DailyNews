@@ -11,7 +11,7 @@ The frontend is built with React, TypeScript, and Vite, and it uses Tailwind CSS
 - [Installation and Setup](#installation-and-setup)
 - [API Endpoints](#api-endpoints)
 - [Future Improvements](#future-improvements)
-- [DailyTrends Service Diagram](#dailyTrends-service-diagram)
+- [DailyNews API Diagram](#dailyNews-api-diagram)
 
 ## Technologies Used
 

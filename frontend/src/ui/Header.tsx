@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import LogiIcon from '../assets/LogoIcon';
+import LogiIcon from '../icons/LogoIcon';
 
 const Header = () => {
   const navigate = useNavigate();

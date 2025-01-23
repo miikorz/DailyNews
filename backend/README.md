@@ -1,6 +1,6 @@
-# DailyTrends API
+# Feed API (Backend)
 
-DailyTrends is an API service built with Node.js, TypeScript, MongoDB, Docker, and Jest. The service provides the top five latest news from the main pages of El País and El Mundo, two popular Spanish newspapers. Besides providing the latest news, DailyTrends offers full CRUD functionality to create, read, update, and delete custom news items.
+The Feed API is an API service built with Node.js, TypeScript, MongoDB, Docker, and Jest. The service provides the top five latest news from the main pages of El País and El Mundo, two popular Spanish newspapers. Besides providing the latest news, it offers full CRUD functionality to create, read, update, and delete custom news items.
 
 ## Table of Contents
 

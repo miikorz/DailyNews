@@ -3,8 +3,8 @@ import useFeedManagement from '../customHooks/useFeedManagement';
 import Modal from '../ui/Modal';
 import NewsSearch from './NewsSearch';
 import { useNavigate } from 'react-router-dom';
-import EditIcon from '../assets/EditIcon';
-import DeleteIcon from '../assets/DeleteIcon';
+import EditIcon from '../icons/EditIcon';
+import DeleteIcon from '../icons/DeleteIcon';
 import { getNewsLetterPage } from '../utils/commonUtils';
 
 const NewsList: React.FC = () => {

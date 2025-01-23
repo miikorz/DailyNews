@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import MultiToolIcon from '../assets/MultiToolIcon';
-import MoonIcon from '../assets/MoonIcon';
-import SunIcon from '../assets/SunIcon';
-import AddIcon from '../assets/AddIcon';
+import MultiToolIcon from '../icons/MultiToolIcon';
+import MoonIcon from '../icons/MoonIcon';
+import SunIcon from '../icons/SunIcon';
+import AddIcon from '../icons/AddIcon';
 
 const MultiTool: React.FC = () => {
   const navigate = useNavigate();

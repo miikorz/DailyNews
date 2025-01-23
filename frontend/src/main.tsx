@@ -27,8 +27,8 @@ root.render(
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-          <Toast />
         </div>
+        <Toast />
       </div>
     </ToastProvider>
   </StrictMode>

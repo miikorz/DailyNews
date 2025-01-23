@@ -152,8 +152,6 @@ In the future, the following improvements could be implemented:
 
 ![alt text](https://github.com/miikorz/DailyTrends/blob/main/diagram-dailytrends.png?raw=true)
 
-<!-- TODO: explain why some news on list have no images -->
-
 ## Why I used this tech stack and design pattern?
 
 I chose to use Node.js, TypeScript, and MongoDB for the backend because of their flexibility, scalability, and ease of use. MongoDB is a NoSQL database that is well-suited for storing unstructured data like news articles and provides a flexible schema that can easily accommodate changes in data structure.
@@ -163,6 +161,10 @@ Regarding the frontend stack, I chose React, TypeScript, and Vite because of the
 Since I wanted to create a light frontend I tried to avoid using Redux or other state management libraries, and instead I used React's built-in state management (context API) and hooks to manage the application's state (and same for assets such as icons or components, where I tried to avoid using component/materials libraries).
 
 I used Jest and React Testing Library for testing because they are widely used testing libraries that provide a simple and intuitive API for writing unit and integration tests. I also used SuperTest for API testing because it allows me to make HTTP requests to the API and assert the response data in a clean and concise way.
+
+## Some news on the list have no images, why is that?
+
+Some news articles on the list may not have images because the web scraping logic is designed to extract the image from the article's content, and some articles may not have images or may only have images once you navigate to the new detail therefore I couldn't extract it unless I navigate into the new detail and extract the image which would impact in the scrapping performance.
 
 ## Why did I use Docker for the project?
 

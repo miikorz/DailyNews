@@ -5,7 +5,7 @@ const Toast: React.FC = () => {
   const { toasts } = useToast();
 
   return (
-    <div className="fixed top-0 right-0 mt-4 mr-4 z-50 space-y-4">
+    <div className="fixed w-full flex justify-center top-0 mt-4 mr-4 z-50 space-y-4">
       {toasts.map((toast) => (
         <div
           key={toast.id}

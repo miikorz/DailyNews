@@ -164,7 +164,7 @@ I used Jest and React Testing Library for testing because they are widely used t
 
 ## Some news on the list have no images, why is that?
 
-Some news articles on the list may not have images because the web scraping logic is designed to extract the image from the article's content, and some articles may not have images or may only have images once you navigate to the new detail therefore I couldn't extract it unless I navigate into the new detail and extract the image which would impact in the scrapping performance.
+Some news articles on the list may not have images because the web scraping logic is designed to extract the image from the article's content, and some articles may not have images or may only have images once you navigate to the article detail therefore I couldn't extract it unless I navigate into the new detail and extract the image which would impact in the scrapping performance.
 
 ## Why did I use Docker for the project?
 

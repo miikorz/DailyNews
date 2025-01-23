@@ -20,12 +20,14 @@ const MultiTool: React.FC = () => {
         <MultiToolIcon />
       </div>
       <div
+        id="dark-mode-button"
         className="absolute cursor-pointer rounded-full transition-all duration-[0.2s] ease-out scale-x-0 group-hover:scale-x-100 group-hover:-translate-y-16  flex  p-2 hover:p-3 bg-red-400 hover:bg-red-500 text-white"
         onClick={darkModeHandler}
       >
         {dark ? <SunIcon /> : <MoonIcon />}
       </div>
       <div
+        id="add-button"
         className="absolute cursor-pointer rounded-full transition-all duration-[0.2s] ease-out scale-x-0 group-hover:scale-x-100 group-hover:-translate-y-14 group-hover:-translate-x-14 flex p-2 hover:p-3 bg-red-400 hover:bg-red-500 text-white"
         onClick={() => {
           navigate('/add');

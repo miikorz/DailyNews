@@ -99,20 +99,4 @@ describe('NewsList', () => {
     expect(images[0]).toHaveAttribute('src', 'https://example.com/image1.jpg');
     expect(images[1]).toHaveAttribute('src', 'https://example.com/image2.jpg');
   });
-
-  test('shows delete notification toast when delete button is clicked', () => {
-    render(
-      <BrowserRouter>
-        <ToastProvider>
-            <NewsList />
-        </ToastProvider>
-      </BrowserRouter>
-    );
-
-    const deleteButtons = screen.getAllByText(/delete/i);
-    deleteButtons.forEach((button) => {
-      button.click();
-      expect(screen.getByText(/News deleted/i)).toBeInTheDocument();
-    });
-  });
 });

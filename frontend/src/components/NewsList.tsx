@@ -80,7 +80,7 @@ const NewsletterList: React.FC = () => {
                 <div className="flex font-bold text-xl mb-2 md:w-11/12">
                   {title}
                 </div>
-                <p className="text-gray-500 dark:text-gray-40">{description}</p>
+                <p className="text-gray-500 dark:text-gray-40 md:w-11/12">{description}</p>
               </div>
               <div className="flex items-center">
                 <div className="text-sm">

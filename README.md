@@ -59,17 +59,17 @@ cd dailynews
 docker-compose up --build
 ```
 
-The API will be available at http://localhost:3001.
+The app will be available at http://localhost:3000 and API at http://localhost:3001 in case you want to do any request.
 
-3. Run Tests: To run tests with Jest:
+3. Run Tests: To run tests with Jest, first choose either frontend or backend folder and run the following command:
 
 ```bash
-npm test
+npm run test
 ```
 
 ## API Endpoints
 
-1. **Create feeds**
+1. **Create a new**
 
 - **POST** `/feed`
 - **Request Body**:
@@ -85,12 +85,12 @@ npm test
 }
 ```
 
-2. **Get news by ID**
+2. **Get new by ID**
 
 - **GET** `/feed/:id`
 - **Response**: Returns a JSON object of the news item with the specified ID.
 
-3. **Update feeds by ID**
+3. **Update new by ID**
 
 - **PUT** `/feed/:id`
 - **Request Body**: Only the fields to be updated
@@ -106,14 +106,25 @@ npm test
 }
 ```
 
-4. **Delete feeds by ID**
+4. **Delete new by ID**
 
 - **DELETE** `/feed/:id`
 
-5. **List of feeds**
+5. **List of news**
 
 - **GET** `/feed`
   Fetches the top 5 latest news articles from El País and El Mundo main pages (and the manually ones added) using web scraping and return them along with the manually stored news.
+
+6. **Seach news by title**
+
+- **POST** `/feed/search`
+- **Request Body**:
+
+```json
+{
+  "searchValue": "News Title"
+}
+```
 
 ## Future Improvements
 
@@ -137,9 +148,13 @@ In the future, the following improvements could be implemented:
 6.  **CI/CD Pipeline**:
     Set up a CI/CD pipeline for automated testing, linting, and deployment of the application on code pushes.
 
-## DailyTrends Service Diagram
+## DailyNews API Diagram
 
 ![alt text](https://github.com/miikorz/DailyTrends/blob/main/diagram-dailytrends.png?raw=true)
 
 <!-- TODO: explain how BD would have change if we had more entities, like separated feed authors, newsletters... in different tables, we would have relation between tables etc -->
 <!-- TODO: explain why some news on list have no images -->
+
+```
+
+```
